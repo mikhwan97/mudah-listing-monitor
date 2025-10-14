@@ -1,0 +1,9 @@
+version: '3.8'
+services:
+  mudah-monitor:
+    build: .
+    volumes:
+      - ./listing.db:/app/listing.db
+      - ./.env:/app/.env
+      - ./searchUrls.json:/app/searchUrls.json
+    restart: always
