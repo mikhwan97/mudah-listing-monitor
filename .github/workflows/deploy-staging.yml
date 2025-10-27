@@ -1,0 +1,32 @@
+name: 🚀 Deploy to Local Staging
+
+on:
+  push:
+    branches:
+      - staging  # run when code is pushed directly to staging
+  pull_request:
+    branches:
+      - staging  # run when a PR targeting staging is closed (merged)
+    types:
+      - closed   # only trigger when PR is closed (not on open/sync)
+
+jobs:
+  deploy:
+    if: github.event.pull_request.merged == true || github.event_name == 'push'
+    name: Deploy to Local Staging
+    runs-on: self-hosted  # use your Mac runner
+    steps:
+      - name: 🧹 Cleanup old workspace
+        run: rm -rf ${{ github.workspace }}/*
+
+      - name: 🛎️ Checkout code
+        uses: actions/checkout@v4
+
+      - name: 🐋 Build Docker images
+        run: docker compose build
+
+      - name: 🚀 Run Docker containers
+        run: docker compose up -d
+
+      - name: ✅ Show running containers
+        run: docker ps
