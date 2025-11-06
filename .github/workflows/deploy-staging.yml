@@ -17,7 +17,7 @@ jobs:
     runs-on: self-hosted  # use your Mac runner
     steps:
       - name: 🧹 Cleanup old workspace
-        run: rm -rf ${{ github.workspace }}/*
+        run: find ${{ github.workspace }} -mindepth 1 -maxdepth 1 ! -name 'data' -exec rm -rf {} +
 
       - name: 🛎️ Checkout code
         uses: actions/checkout@v4
