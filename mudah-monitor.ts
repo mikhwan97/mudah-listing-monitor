@@ -5,7 +5,6 @@ import ScrapListings  from "./scrapper/scrapListings";
 import TelegramNotifier from "./telegram/telegram";
 import { loadUrlConfig } from './utils/urlLoader';
 
-//dummy change
 // load Url to search
 const {searchUrls: MUDAH_URL} = loadUrlConfig();
 
