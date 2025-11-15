@@ -42,7 +42,7 @@ function getNewListings() {
     }
 
 
-    const scraper = new ScrapListings({ headless: true }); // pass headless:true in production
+    const scraper = new ScrapListings({ headless: false }); // pass headless:true in production
     let newDataAll: Listing[] = [];
     for (const url of MUDAH_URL) {
         const newData = await scraper.findNewListings(url);
