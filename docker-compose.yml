@@ -3,7 +3,7 @@ services:
   mudah-monitor:
     build: .
     volumes:
-      - ./listing.db:/app/listing.db
-      - ./.env:/app/.env
-      - ./searchUrls.json:/app/searchUrls.json
+      - ./data/listing.db:/app/data/listing.db
+      - ./mudah-listing-monitor/.env:/app/mudah-listing-monitor/.env
+      - ./data/searchUrls.json:/app/data/searchUrls.json
     restart: always
